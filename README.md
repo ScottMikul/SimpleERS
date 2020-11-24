@@ -25,10 +25,8 @@ The Expense Reimbursement System (ERS) manages the process of reimbursing employ
 List of features ready and TODOs for future development
 * Add reimbursement request as employee
 * approve/deny reimbursement request as manager
-
-To-do list:
-* Wow improvement to be done 1
-* Wow improvement to be done 2
+* Create/ destroy session on login and logout
+* Bootstrap styling
 
 ## Getting Started
 
