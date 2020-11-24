@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id = "test"></div>
+</body>
+<script>
+    var result = 
+        [
+            {description:"desc1"}, 
+            {description:"desc2"}
+        ];
+    console.log(result);
+    var testEl = document.getElementById("test");
+    result.forEach(element => {
+        var newE = document.createElement("div");
+        newE.innerText = element.description;
+        testEl.append(newE);
+        newE.cla
+    })
+</script>
+</html>

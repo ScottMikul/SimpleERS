@@ -1,0 +1,60 @@
+<!--Specify the document type.-->
+<!DOCTYPE html>
+
+<!--The root tag of an HTML document is "html"-->
+<html>
+<!--We put metadata about our web page within the head tags-->
+<head>
+<meta charset="UTF-8" />
+<meta http-equiv="Cache-control" content="No-Cache">
+<title>Welcome Employeeeeee</title>
+<!--We can use the link tag to specify the location of our stylesheet-->
+<link rel="stylesheet" href="../css/bootstrap.min.css"></link>
+<!--The better (more standard) way of including JS is by using the script tag and linking to an external JS file. While you can do this here, it is customary to place the script tag (with a linked source> at the bottom of the body so that you can make sure that all elements have been rendered before you attempt to manipulate them.-->
+</head>
+<!--This is where we place the elements that are visible to the end user.-->
+<!--This is inline CSS; it's generally bad practice to do this as it doesn't scale well as our document gets more complex and requires more style.-->
+<body style="background-color: rgb(240, 243, 245);">
+
+	<div class="container">
+		<h1 class="text-center">Welcome Employee</h1>
+
+
+			<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+				<a class="navbar-brand" href="/simpleERS/views/employee.html">simpleERS</a>
+				<button class="navbar-toggler" type="button" data-toggle="collapse"
+					data-target="#navbarColor01" aria-controls="navbarColor01"
+					aria-expanded="false" aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon"></span>
+				</button>
+		
+				<div class="collapse navbar-collapse" id="navbarColor01">
+					<ul class="navbar-nav mr-auto">
+						<li class="nav-item"><a class="nav-link" href="/simpleERS/views/accountdetails.html">Account Information</a>
+						</li>
+						<li class="nav-item"><a class="nav-link" href="/simpleERS/views/addrr.html">Add Reimbursement Request</a>
+						</li>
+					</ul>
+		
+					<a href="/simpleERS/api/logout"><button class="btn btn-secondary my-2 my-sm-0" >Logout</button></a>
+		
+				</div>
+			</nav>
+			<div>
+				<form method = "post" action = "/simpleERS/api/updateemployee" class="d-flex mt-4">
+					<div>
+					<label for="first">First </label>
+					<input type="text" id = "first" name = "first"></input></div>
+					<div><label for="last">Last </label><input type="text" id = "last" name = "last"></input></div>
+					<div><label for="password">password </label><input type = "text" id = "password" name = "password" ></input></div>
+					<div><label for="username">username </label><input type = "text" id = "username" name="username"></input></div>
+					<div><label for="email">email </label><input type = "text" id = "email" name="email"></input></div>
+					<div><input type = "submit" value="update information"></input></div>
+				</form>
+			</div>
+		</div>
+	<script src="../scripts/index.js"></script>
+	<script src="../scripts/getemployeeinfo.js"></script>
+	
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!--Specify the document type.-->
+<!DOCTYPE html>
+
+<!--The root tag of an HTML document is "html"-->
+<html>
+<!--We put metadata about our web page within the head tags-->
+<head>
+<meta charset="UTF-8" />
+<meta http-equiv="Cache-control" content="No-Cache">
+<title>Welcome Employeeeeee</title>
+<!--We can use the link tag to specify the location of our stylesheet-->
+<link rel="stylesheet" href="../css/bootstrap.min.css"></link>
+<!--The better (more standard) way of including JS is by using the script tag and linking to an external JS file. While you can do this here, it is customary to place the script tag (with a linked source> at the bottom of the body so that you can make sure that all elements have been rendered before you attempt to manipulate them.-->
+</head>
+<!--This is where we place the elements that are visible to the end user.-->
+<!--This is inline CSS; it's generally bad practice to do this as it doesn't scale well as our document gets more complex and requires more style.-->
+<body style="background-color: rgb(240, 243, 245);">
+
+	<div class="container">
+		<h1>Reimbursement Request</h1>
+			<form id="form" method="post" action="/webapp/api/addReimbursementRequest">
+  <fieldset>
+    
+    <!-- Amount -->
+   <div class="form-group">
+      <label for="amount">Amount</label>
+      <input type="email" class="form-control" id="amount" name = "amount" placeholder="0.00">
+    </div>
+    
+     <!-- description text area -->
+    <div class="form-group">
+      <label for="description">Description</label>
+      <input type="email" class="form-control" id="description" name = "description" placeholder="relocation">
+    </div>
+    <!-- image (file) -->
+    <div class="form-group">
+      <label for="image">File input</label>
+      <input type="file" class="form-control-file" id="image" name="image" aria-describedby="fileHelp">
+      <small id="fileHelp" class="form-text text-muted">Upload an image of the receipt</small>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </fieldset>
+</form>
+	</div>
+
+</body>
+</html>

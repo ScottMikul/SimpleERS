@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ xmlns="http://java.sun.com/xml/ns/javaee"
+  xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_1.xsd" version="3.1">
+  <display-name>simpleERS</display-name>
+  <welcome-file-list>
+    <welcome-file>index.html</welcome-file>
+    <welcome-file>index.htm</welcome-file>
+    <welcome-file>index.jsp</welcome-file>
+    <welcome-file>default.html</welcome-file>
+    <welcome-file>default.htm</welcome-file>
+    <welcome-file>default.jsp</welcome-file>
+  </welcome-file-list>
+  <servlet>
+    <description></description>
+    <display-name>Router</display-name>
+    <servlet-name>Router</servlet-name>
+    <servlet-class>com.revature.servlet.Router</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Router</servlet-name>
+    <url-pattern>/api/*</url-pattern>
+  </servlet-mapping>
+  <filter>
+    <display-name>AuthenticationFilter</display-name>
+    <filter-name>AuthenticationFilter</filter-name>
+    <filter-class>com.revature.servlet.AuthenticationFilter</filter-class>
+  </filter>
+  <filter-mapping>
+    <filter-name>AuthenticationFilter</filter-name>
+    <url-pattern>/views/*</url-pattern>
+  </filter-mapping>
+  <error-page>
+    <error-code>500</error-code>
+    <location>/500.html</location>
+  </error-page>
+</web-app>

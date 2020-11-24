@@ -1,0 +1,147 @@
+<!--Specify the document type.-->
+<!DOCTYPE html>
+
+<!--The root tag of an HTML document is "html"-->
+<html>
+<!--We put metadata about our web page within the head tags-->
+<head>
+<meta charset="UTF-8" />
+<meta http-equiv="Cache-control" content="No-Cache">
+<title>Welcome Employeeeeee</title>
+<!--We can use the link tag to specify the location of our stylesheet-->
+<link rel="stylesheet" href="../css/bootstrap.min.css"></link>
+<!--The better (more standard) way of including JS is by using the script tag and linking to an external JS file. While you can do this here, it is customary to place the script tag (with a linked source> at the bottom of the body so that you can make sure that all elements have been rendered before you attempt to manipulate them.-->
+</head>
+<!--This is where we place the elements that are visible to the end user.-->
+<!--This is inline CSS; it's generally bad practice to do this as it doesn't scale well as our document gets more complex and requires more style.-->
+<body style="background-color: rgb(240, 243, 245);">
+
+	<div class="container">
+		<h1 class="text-center">Manager's Employee Requests</h1>
+
+
+	<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+		<a class="navbar-brand" href="/simpleERS/views/manager.html">simpleERS</a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse"
+			data-target="#navbarColor01" aria-controls="navbarColor01"
+			aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+
+		<div class="collapse navbar-collapse" id="navbarColor01">
+			<ul class="navbar-nav mr-auto">
+				<li class="nav-item"><a class="nav-link" href="/simpleERS/views/managedemployeesrr.html">View Pending from employees</a>
+				<li class="nav-item"><a class="nav-link" href="/simpleERS/views/roster.html">View All Employees</a>
+
+			</ul>
+		    <div class="form-inline my-2 my-lg-0">
+		      <input class="form-control mr-sm-2" type="text" placeholder="Search" id="search">
+		      <button class="btn btn-secondary my-2 my-sm-0" onclick="searchemployees()">Search</button>
+		      
+		    </div>
+			<a href="/simpleERS/api/logout" ><button class="btn btn-secondary my-2 my-sm-0" >Logout</button></a>
+
+		</div>
+	</nav>
+	<table class="table table-hover">
+		<thead>
+			<tr>
+				<th scope="col"> Employee</th>
+				<th scope="col">Description</th>
+				<th scope="col">Amount</th>
+				<th scope="col">Image</th>
+				<th scope="col">Status</th>
+				<th scope="col">Resolved by</th>
+			</tr>
+		</thead>
+		<tbody id="tbody">
+		</tbody>
+	</table>
+		</div>
+	<script >
+	window.onload = function(){
+
+		getEmpRequests();
+	}
+		function getEmpRequests(search) {
+		  var xhttp = new XMLHttpRequest();
+		  xhttp.onreadystatechange = function() {
+		    if (this.readyState == 4 && this.status == 200) {
+		    	console.log(this);
+				var results = JSON.parse(this.responseText);
+				console.log(results);
+				document.getElementById("tbody").innerHTML = "";
+				results.forEach(element => {
+					if(search==="" ||!search|| element.employeeFullName.includes(search)){
+					var row = document.createElement("tr");
+						var employeefullname = document.createElement("td");
+						employeefullname.classList.add("table-light");
+						employeefullname.innerText = element.employeeFullName;
+						row.append(employeefullname);
+
+						var description = document.createElement("td");
+						description.classList.add("table-light");
+						
+						description.innerText = element.description;
+						
+						row.append(description);
+						
+						var amount = document.createElement("td");
+						amount.classList.add("table-light");
+						amount.innerText = element.amount;
+						row.append(amount);
+						
+						var image = document.createElement("td");
+						image.classList.add("table-light");
+						
+						if(element.hasImage){
+							var imageLink = document.createElement("a");
+							imageLink.setAttribute("href","/simpleERS/views/reimbursementimage.html?id=" + element.reimbursementId ) ;
+							imageLink.innerText = "view"
+							image.appendChild(imageLink);
+						}
+						else {
+							var imageLink = document.createElement("a");
+							image.innerText = "none";
+							image.appendChild(imageLink);
+						}
+						row.append(image);
+						
+						var status = document.createElement("td");
+						status.classList.add("table-light");
+						
+						status.innerText = element.status;
+						row.append(status);
+
+						var resolverFullName = document.createElement("td");
+						resolverFullName.classList.add("table-light");
+
+						if(element.resovlerFullName === "null null" ){
+							resolverFullName.innerText = "";
+						}
+						else{
+							resolverFullName.innerText = element.resovlerFullName;
+						}
+
+						row.append(resolverFullName);
+
+					console.log(row);
+				
+					document.getElementById("tbody").appendChild(row);
+					}
+				});
+		    }
+		  };
+		  xhttp.open("GET", "/simpleERS/api/allemployeerequests", true);
+		  //xhttp.open("GET", "https://jsonplaceholder.typicode.com/todos/1", true);
+		  xhttp.send();
+	}
+		function searchemployees(){
+			event.preventDefault();
+			var searchResult = document.getElementById("search").value;
+			console.log(searchResult);
+			getEmpRequests(searchResult);
+		}
+	</script>
+</body>
+</html>
