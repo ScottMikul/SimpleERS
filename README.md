@@ -45,6 +45,8 @@ System.getenv("awsdb")
 System.getenv("dbname") 
 System.getenv("dbpass")
 
+Launch the project from local host on a tomcat server
+
 ## License
 
 This project uses the following license: [MIT](LICENCE.md).
