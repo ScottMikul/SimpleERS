@@ -1,0 +1,1 @@
+insert into profile (first_name,last_name,username, "password", account_type) values('admin',' admin', 'admin', 'admin', 'admin');
